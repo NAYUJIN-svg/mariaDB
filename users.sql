@@ -39,5 +39,28 @@ VALUES
 -- 데이터 조회
 SELECT * FROM users;
 
+CREATE TABLE user (
+    user_id INT AUTO_INCREMENT PRIMARY KEY COMMENT '사용자 고유 ID',
+    name VARCHAR(100) NOT NULL COMMENT '사용자 이름',
+    email VARCHAR(255) NOT NULL UNIQUE COMMENT '로그인용 이메일',
+    password_hash VARCHAR(255) NOT NULL COMMENT '비밀번호 해시',
+    phone VARCHAR(20) DEFAULT NULL COMMENT '전화번호 (선택)',
+    role ENUM('user','admin','manager') DEFAULT 'user' COMMENT '사용자 권한',
+    grade INT DEFAULT 1 COMMENT '회원 등급',
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP COMMENT '계정 생성일시'
+);
 
+INSERT INTO user (name, email, password_hash, phone, role, grade, created_at) VALUES
+('Kim Minsoo', 'minsoo.kim@example.com', 'hash1', '010-1111-1111', 'user', 1, '2025-01-01 10:00:00'),
+('Lee Jihyun', 'jihyun.lee@example.com', 'hash2', '010-2222-2222', 'user', 2, '2025-02-15 12:30:00'),
+('Park Sungho', 'sungho.park@example.com', 'hash3', '010-3333-3333', 'admin', 3, '2025-03-20 09:45:00'),
+('Choi Hyeri', 'hyeri.choi@example.com', 'hash4', '010-4444-4444', 'user', 1, '2025-04-10 14:10:00'),
+('Jung Doyoung', 'doyoung.jung@example.com', 'hash5', '010-5555-5555', 'manager', 4, '2025-05-05 08:20:00'),
+('Han Seojin', 'seojin.han@example.com', 'hash6', '010-6666-6666', 'user', 2, '2025-06-12 16:00:00'),
+('Kang Bora', 'bora.kang@example.com', 'hash7', '010-7777-7777', 'user', 1, '2025-07-08 11:30:00'),
+('Yoon Taemin', 'taemin.yoon@example.com', 'hash8', '010-8888-8888', 'admin', 5, '2025-08-21 13:15:00'),
+('Seo Nari', 'nari.seo@example.com', 'hash9', '010-9999-9999', 'user', 3, '2025-09-30 17:50:00'),
+('Lim Kyuhyun', 'kyuhyun.lim@example.com', 'hash10', '010-1010-1010', 'manager', 4, '2025-10-11 19:05:00');
+
+SELECT * FROM USER;
 
